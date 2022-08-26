@@ -8,10 +8,6 @@ namespace CountryMVCLab
 {
     public class CountryController
     {
-
-
-
-
         public List<Country> CountryDb { get; set; } = new List<Country>()
         {
             new Country("USA",
@@ -28,21 +24,55 @@ namespace CountryMVCLab
 
         public void WelcomeAction()
         {
-            int selection = GetSelection();
-            var country = new CountryView(CountryDb[selection -1]);
-            country.Display();
+            //int selection = GetSelection();
+
+            bool loopChoice = true;
+
+            while (loopChoice)
+            {
+                var country = new CountryListView(CountryDb);
+
+                Console.WriteLine("Hello, welcome to the country app. Please select a country from the following list:\n");
+                country.Display();
+                Console.WriteLine(); //Line spacing
+                int selection = int.Parse(Console.ReadLine());
+
+                CountryAction(CountryDb[selection - 1]);
+
+                Console.WriteLine("\nWould you like to learn about another country? (y/n)");
+                string loopInput = Console.ReadLine().ToLower();
+
+                if (loopInput == "y")
+                {
+                    loopChoice = true;
+                    Console.Clear();
+                }
+                else if (loopInput == "n")
+                {
+                    Console.WriteLine("\nGoodbye!");
+                    loopChoice = false;
+                }
+                else
+                {
+                    Console.WriteLine("\nNot a valid choice! Starting over anyway...");
+                    Thread.Sleep(2500);
+                    Console.Clear();
+                    loopChoice= true;
+                }
+            }
+            
         }
 
-        public int GetSelection()
-        {
-            Console.WriteLine("Which country would you like to view? Enter 1-" + CountryDb.Count());
-            return int.Parse(Console.ReadLine());
-        }
+        //public int GetSelection()
+        //{
+        //    Console.WriteLine("Which country would you like to view? Enter 1-" + CountryDb.Count());
+        //    return int.Parse(Console.ReadLine());
+        //}
 
-        public void Welcome()
-        {
+        //public void Welcome()
+        //{
             
 
-        }
+        //}
     }
 }
