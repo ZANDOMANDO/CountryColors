@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace CountryMVCLab
         public void Display()
         {
             string color = "";
-            DisplayCountry.Colors.ForEach(x => color += ", ");
+            DisplayCountry.Colors.ForEach(x => color += x +", ");
 
             Console.WriteLine("Name: " + DisplayCountry.Name);
             Console.WriteLine("Continent: " + DisplayCountry.Continent);

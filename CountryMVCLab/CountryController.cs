@@ -35,7 +35,7 @@ namespace CountryMVCLab
 
         public int GetSelection()
         {
-            Console.WriteLine("Which dish would you like to view? Enter 1-" + CountryDb.Count);
+            Console.WriteLine("Which country would you like to view? Enter 1-" + CountryDb.Count());
             return int.Parse(Console.ReadLine());
         }
 
