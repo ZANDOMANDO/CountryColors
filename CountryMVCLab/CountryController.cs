@@ -10,9 +10,24 @@ namespace CountryMVCLab
     {
         public List<Country> CountryDb { get; set; } = new List<Country>()
         {
+            new Country("Colombia",
+                "South America",
+                new List<string> {"Yellow", "Blue", "Red" }),
+            new Country("Mexico",
+                "North America",
+                new List<string> {"Green", "White", "Red" }),
             new Country("USA",
                 "North America",
-                new List<string> {"red", "White", "Blue" })
+                new List<string> {"Red", "White", "Blue" }),
+             new Country("Spain",
+                "Europe",
+                new List<string> {"Red", "Yellow", "Red" }),
+              new Country("Brazil",
+                "South America",
+                new List<string> {"Green", "Yellow", "Blue","Green" }),
+                  new Country("Belize",
+                "Central America",
+                new List<string> {"Red", "Blue", "Red" })
         };
 
         public void CountryAction(Country c)
@@ -38,6 +53,7 @@ namespace CountryMVCLab
                 int selection = int.Parse(Console.ReadLine());
 
                 CountryAction(CountryDb[selection - 1]);
+                ConsoleColor currentBackground = Console.BackgroundColor;
 
                 Console.WriteLine("\nWould you like to learn about another country? (y/n)");
                 string loopInput = Console.ReadLine().ToLower();
@@ -49,7 +65,7 @@ namespace CountryMVCLab
                 }
                 else if (loopInput == "n")
                 {
-                    Console.WriteLine("\nGoodbye!");
+                    Console.WriteLine("\nAdios!");
                     loopChoice = false;
                 }
                 else
@@ -63,16 +79,6 @@ namespace CountryMVCLab
             
         }
 
-        //public int GetSelection()
-        //{
-        //    Console.WriteLine("Which country would you like to view? Enter 1-" + CountryDb.Count());
-        //    return int.Parse(Console.ReadLine());
-        //}
-
-        //public void Welcome()
-        //{
-            
-
-        //}
+ 
     }
 }

@@ -19,10 +19,40 @@ namespace CountryMVCLab
         {
             string color = "";
             DisplayCountry.Colors.ForEach(x => color += x +", ");
-
+            color = color.TrimEnd().TrimEnd(',');
             Console.WriteLine("\nName: " + DisplayCountry.Name);
             Console.WriteLine("Continent: " + DisplayCountry.Continent);
-            Console.WriteLine("Color: " + color);
+            Console.WriteLine("Colors: " + color);
+
+            foreach (String x in DisplayCountry.Colors)
+            {
+
+
+                ConsoleColor consoleColor;
+                if (Enum.TryParse<ConsoleColor>(x, out consoleColor))
+                {
+                    Console.ForegroundColor = consoleColor;
+                    Console.WriteLine("/////");
+
+                }
+                else
+                {
+                    Console.WriteLine("You've entered invalid color!");
+                }
+                ConsoleColor currentBackground = Console.BackgroundColor;
+
+                Console.ForegroundColor = Console.BackgroundColor;
+
+
+            }
+
+
+
+
+
+
+
         }
+
     }
 }
