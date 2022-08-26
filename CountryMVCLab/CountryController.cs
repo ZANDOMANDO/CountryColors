@@ -28,9 +28,8 @@ namespace CountryMVCLab
 
         public void WelcomeAction()
         {
-            int selection = 
-            Console.WriteLine("Hello, welcome to the country app.Please select a country from the following list: ");
-            var country = new CountryListView(CountryDb);
+            int selection = GetSelection();
+            var country = new CountryView(CountryDb[selection -1]);
             country.Display();
         }
 
@@ -38,6 +37,12 @@ namespace CountryMVCLab
         {
             Console.WriteLine("Which dish would you like to view? Enter 1-" + CountryDb.Count);
             return int.Parse(Console.ReadLine());
+        }
+
+        public void Welcome()
+        {
+            
+
         }
     }
 }
